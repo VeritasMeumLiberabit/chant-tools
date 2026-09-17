@@ -1,0 +1,8 @@
+(include_subdirs qualified)
+
+(library
+ (name chant_tools)
+ (public_name chant-tools)
+ (libraries sedlex menhirLib)
+ (preprocess
+  (pps sedlex.ppx)))

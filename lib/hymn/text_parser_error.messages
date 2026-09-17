@@ -1,0 +1,86 @@
+hymn_text: VERSE_SEPARATOR
+##
+## Ends in an error in state: 0.
+##
+## hymn_text' -> . hymn_text [ # ]
+##
+## The known suffix of the stack is as follows:
+##
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE SPACE VERSE_SEPARATOR
+##
+## Ends in an error in state: 3.
+##
+## words -> words SPACE . word [ VERSE_SEPARATOR SPACE NEWLINE EOF ]
+##
+## The known suffix of the stack is as follows:
+## words SPACE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE SPACE SYLLABLE SYLLABLE
+##
+## Ends in an error in state: 4.
+##
+## word -> word . SEPARATOR SYLLABLE [ VERSE_SEPARATOR SPACE SEPARATOR NEWLINE EOF ]
+## words -> words SPACE word . [ VERSE_SEPARATOR SPACE NEWLINE EOF ]
+##
+## The known suffix of the stack is as follows:
+## words SPACE word
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE SEPARATOR VERSE_SEPARATOR
+##
+## Ends in an error in state: 5.
+##
+## word -> word SEPARATOR . SYLLABLE [ VERSE_SEPARATOR SPACE SEPARATOR NEWLINE EOF ]
+##
+## The known suffix of the stack is as follows:
+## word SEPARATOR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE SYLLABLE
+##
+## Ends in an error in state: 7.
+##
+## word -> word . SEPARATOR SYLLABLE [ VERSE_SEPARATOR SPACE SEPARATOR NEWLINE EOF ]
+## words -> word . [ VERSE_SEPARATOR SPACE NEWLINE EOF ]
+##
+## The known suffix of the stack is as follows:
+## word
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE VERSE_SEPARATOR VERSE_SEPARATOR
+##
+## Ends in an error in state: 9.
+##
+## verses -> verses VERSE_SEPARATOR . verse [ VERSE_SEPARATOR EOF ]
+##
+## The known suffix of the stack is as follows:
+## verses VERSE_SEPARATOR
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+
+hymn_text: SYLLABLE NEWLINE VERSE_SEPARATOR
+##
+## Ends in an error in state: 11.
+##
+## verse -> verse NEWLINE . words [ VERSE_SEPARATOR NEWLINE EOF ]
+##
+## The known suffix of the stack is as follows:
+## verse NEWLINE
+##
+
+<YOUR SYNTAX ERROR MESSAGE HERE>
+

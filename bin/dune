@@ -1,0 +1,4 @@
+(executable
+ (public_name chant-tools)
+ (name main)
+ (libraries chant_tools))
