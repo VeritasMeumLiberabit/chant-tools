@@ -13,7 +13,7 @@
       | _ -> failwith "ERROR"
     in
     {syllables; start_pos; end_pos}
-  
+
   let prepare_line (l: word list) : line =
     let end_pos = match l with
      | {end_pos} :: _ -> end_pos
@@ -66,17 +66,21 @@
 hymn_text: v=verses EOF { prepare_text v }
 
 verses:
-  | v=verse { [prepare_verse v] }
-  | vs=verses VERSE_SEPARATOR v=verse { prepare_verse v :: vs }
+  v=verse { [ v ] }
+  | vs=verses VERSE_SEPARATOR v=verse { v :: vs }
 
-verse:
-  | l=words { [prepare_line l] }
-  | v=verse NEWLINE l=words { prepare_line l :: v }
+verse: l=lines { prepare_verse l }
+
+lines:
+  l=line { [l] }
+  | ls=lines NEWLINE l=line { l :: ls }
+
+line: l=words { prepare_line l }
 
 words:
-  | w=word { [prepare_word w] }
+  w=word { [ prepare_word w ] }
   | ws=words SPACE w=word { prepare_word w :: ws }
 
 word:
-  | s=SYLLABLE { [s] }
+  s=SYLLABLE { [s] }
   | w=word SEPARATOR s=SYLLABLE { s :: w }

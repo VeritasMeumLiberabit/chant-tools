@@ -20,7 +20,7 @@ hymn_text: SYLLABLE SPACE VERSE_SEPARATOR
 ## words SPACE
 ##
 
-Trailing space not expected.
+Syllable expected.
 
 hymn_text: SYLLABLE SPACE SYLLABLE SYLLABLE
 ##

@@ -3,9 +3,14 @@ second line
 
 Second Verse
 
-1|2|3 1 |}
+1|2|3 1|}
 
 let () =
   match ast with
   | Ok ast -> Format.printf "%s" (Chant_tools.Hymn.text_to_string ast)
   | Error error -> Format.printf "%s" error
+
+(* let () = *)
+(*   match ast with *)
+(*   | Ok ast -> Format.printf "%a" Chant_tools.Hymn.fmt_text ast *)
+(*   | Error error -> Format.printf "%s" error *)

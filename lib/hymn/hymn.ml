@@ -55,26 +55,21 @@ let text_to_string hymn_text =
 let fmt_word fmt word =
   let format_syllable syllable =
     let syllable, _, _ = syllable in
-    Format.fprintf fmt "%s" syllable
+    Format.fprintf fmt " \"%s\"; " syllable
   in
+  Format.fprintf fmt "{ syllables = [";
   List.iter format_syllable word.syllables ;
-  Format.fprintf fmt " "
-
-let fmt_word fmt word =
-  let format_syllable syllable =
-    let syllable, _, _ = syllable in
-    Format.fprintf fmt "%s" syllable
-  in
-  List.iter format_syllable word.syllables ;
-  Format.fprintf fmt " "
+  Format.fprintf fmt "] }"
 
 let fmt_line fmt line =
+  Format.fprintf fmt "Line { syllable_count = %d; words = [" line.syllable_count;
   List.iter (fmt_word fmt) line.words ;
-  Format.fprintf fmt "\n"
+  Format.fprintf fmt "] }\n"
 
 let fmt_verse fmt verse =
+  Format.fprintf fmt "{ meter = [";
   List.iter (fmt_line fmt) verse.lines ;
-  Format.fprintf fmt "\n"
+  Format.fprintf fmt "] }\n"
 
 let fmt_text fmt hymn_text =
   List.iter (fmt_verse fmt) hymn_text.verses ;

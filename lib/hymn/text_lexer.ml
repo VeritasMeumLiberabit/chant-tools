@@ -1,6 +1,6 @@
 let rec token buf =
   match%sedlex buf with
-  | Plus "\n\n" ->
+  | "\n\n" ->
       Sedlexing.new_line buf ;
       Sedlexing.new_line buf ;
       Text_parser.VERSE_SEPARATOR (Sedlexing.lexing_positions buf)
@@ -8,7 +8,7 @@ let rec token buf =
       let lexeme = Sedlexing.Utf8.lexeme buf in
       let start, finish = Sedlexing.lexing_positions buf in
       Text_parser.SYLLABLE (lexeme, start, finish)
-  | Plus (Chars "\n") ->
+  | "\n" ->
       Sedlexing.new_line buf ;
       Text_parser.NEWLINE (Sedlexing.lexing_positions buf)
   | Plus (Chars " \t") -> Text_parser.SPACE (Sedlexing.lexing_positions buf)
