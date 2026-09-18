@@ -1,19 +1,40 @@
 open Types
 
-let fail checkpoint =
+type error_code = SyntaxError
+
+let code_to_string code =
+  match code with
+  | SyntaxError -> "Syntax Error"
+
+let fail filename content checkpoint =
   match checkpoint with
-  | Text_parser.MenhirInterpreter.HandlingError e ->
-      Error "Syntax error at state number "
+  | Text_parser.MenhirInterpreter.HandlingError env ->
+      let start_pos, end_pos = Text_parser.MenhirInterpreter.positions env in
+      let message = Text_parser_error_messages.message (Text_parser.MenhirInterpreter.current_state_number env) in
+      let message = Grace.Diagnostic.Message.create message in
+      let source : Grace.Source.t = `String {name = filename; content} in
+      let range = Grace.Range.create ~source (Grace.Byte_index.of_lex start_pos) (Grace.Byte_index.of_lex end_pos) in
+      let diagnostic = Grace.Diagnostic.(createf ~labels:Label.[primary ~range message] ~code:SyntaxError Error "") in
+      Error
+        (Format.asprintf "%a@."
+           (Grace_ansi_renderer.pp_diagnostic
+              ?config:
+                (Some
+                   { Grace_ansi_renderer.Config.default with
+                     num_contextual_lines = 4;
+                     enable_inline_contextual_lines = true } )
+              ~code_to_string )
+           diagnostic )
   | _ -> Error "Unknown error"
 
 let succeed (a : hymn_text) = Ok a
 
-let parse_text input =
+let parse_text ?(filename = None) input =
   let buf = Sedlexing.Utf8.from_string input in
   let supplier = Text_lexer.tokenize_incremental buf in
   let buffer, supplier = MenhirLib.ErrorReports.wrap_supplier supplier in
   let checkpoint = Text_parser.Incremental.hymn_text (Sedlexing.lexing_position_start buf) in
-  Text_parser.MenhirInterpreter.loop_handle succeed fail supplier checkpoint
+  Text_parser.MenhirInterpreter.loop_handle succeed (fail filename input) supplier checkpoint
 
 let word_to_string word =
   let syllables = List.map (fun (a, b, c) -> a) word.syllables in

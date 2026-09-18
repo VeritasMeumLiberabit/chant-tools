@@ -11,7 +11,7 @@
 
 (maintainers "Jonathan Lowe <me@jonathanlowe.dev>")
 
-(license LICENSE)
+(license GPL-3.0-only)
 
 (documentation https://url/to/documentation)
 

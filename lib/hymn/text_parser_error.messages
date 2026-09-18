@@ -8,7 +8,7 @@ hymn_text: VERSE_SEPARATOR
 ##
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Hymn should start with a syllable.
 
 hymn_text: SYLLABLE SPACE VERSE_SEPARATOR
 ##
@@ -20,7 +20,7 @@ hymn_text: SYLLABLE SPACE VERSE_SEPARATOR
 ## words SPACE
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Trailing space not expected.
 
 hymn_text: SYLLABLE SPACE SYLLABLE SYLLABLE
 ##
@@ -45,7 +45,7 @@ hymn_text: SYLLABLE SEPARATOR VERSE_SEPARATOR
 ## word SEPARATOR
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Expected another syllable.
 
 hymn_text: SYLLABLE SYLLABLE
 ##
@@ -70,7 +70,7 @@ hymn_text: SYLLABLE VERSE_SEPARATOR VERSE_SEPARATOR
 ## verses VERSE_SEPARATOR
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Empty lines not expected.
 
 hymn_text: SYLLABLE NEWLINE VERSE_SEPARATOR
 ##
@@ -82,5 +82,5 @@ hymn_text: SYLLABLE NEWLINE VERSE_SEPARATOR
 ## verse NEWLINE
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Empty line not expected.
 

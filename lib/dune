@@ -3,6 +3,6 @@
 (library
  (name chant_tools)
  (public_name chant-tools)
- (libraries sedlex menhirLib)
+ (libraries sedlex menhirLib grace grace.ansi_renderer)
  (preprocess
   (pps sedlex.ppx)))

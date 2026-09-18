@@ -2,16 +2,19 @@
 opam-version: "2.0"
 synopsis: "A short synopsis"
 description: "A longer description"
-maintainer: ["Maintainer Name <maintainer@example.com>"]
-authors: ["Author Name <author@example.com>"]
-license: "LICENSE"
+maintainer: ["Jonathan Lowe <me@jonathanlowe.dev>"]
+authors: ["Jonathan Lowe <me@jonathanlowe.dev>"]
+license: "GPL-3.0-only"
 tags: ["add topics" "to describe" "your" "project"]
 homepage: "https://github.com/username/reponame"
 doc: "https://url/to/documentation"
 bug-reports: "https://github.com/username/reponame/issues"
 depends: [
   "dune" {>= "3.24"}
-  "ocaml"
+  "ocaml" {= "5.5.1"}
+  "menhir" {= "20260209"}
+  "sedlex" {= "3.7"}
+  "grace" {= "0.4.1"}
   "odoc" {with-doc}
 ]
 build: [
