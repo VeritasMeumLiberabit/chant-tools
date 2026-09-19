@@ -21,10 +21,13 @@
  (name chant-tools)
  (synopsis "A short synopsis")
  (description "A longer description")
+ (version 0.0.1)
  (depends
    (ocaml (="5.5.1"))
    (menhir (="20260209"))
    (sedlex (="3.7"))
+   (cmdliner (="2.1.1"))
+   (alcotest :with-test)
    (grace (="0.4.1")))
  (tags
   ("add topics" "to describe" your project)))
